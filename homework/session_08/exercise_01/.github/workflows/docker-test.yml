@@ -1,0 +1,18 @@
+name: Test DooD Connection
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test_docker:
+    runs-on: [self-hosted, quickbite]
+    steps:
+      - name: Lấy mã nguồn
+        uses: actions/checkout@v5
+        
+      - name: Kiểm tra trạng thái Docker Daemon (DooD)
+        run: |
+          echo "Thử giao tiếp với Docker Host thông qua docker.sock..."
+          docker info
